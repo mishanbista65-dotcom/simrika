@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Simrika</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:black;
+  overflow:hidden;
+  height:100vh;
+  color:white;
+}
+
+/* MATRIX BACKGROUND */
+
+#matrix{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:0;
+}
+
+/* SCREEN */
+
+.screen{
+  position:absolute;
+  width:100%;
+  height:100vh;
+
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+
+  text-align:center;
+
+  padding:20px;
+
+  z-index:2;
+}
+
+.hidden{
+  display:none;
+}
+
+/* TITLE */
+
+.start-title{
+
+  color:#ffb6f2;
+
+  font-size:2rem;
+
+  margin-bottom:30px;
+
+  text-shadow:0 0 10px rgba(255,182,242,0.3);
+
+  animation:floatText 2s infinite ease-in-out;
+}
+
+@keyframes floatText{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+/* BUTTON */
+
+.btn{
+
+  padding:15px 40px;
+
+  border:none;
+  border-radius:50px;
+
+  background:linear-gradient(145deg,#ff9be8,#ff66d9);
+
+  color:white;
+
+  font-size:1.2rem;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  box-shadow:
+  0 0 20px rgba(255,105,210,0.4),
+  inset 0 0 10px rgba(255,255,255,0.3);
+
+  animation:pulse 1.5s infinite;
+}
+
+@keyframes pulse{
+
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(1.05);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+/* COUNTDOWN */
+
+.countdown{
+
+  font-size:10rem;
+
+  font-weight:900;
+
+  animation:zoom 1s infinite;
+
+  text-shadow:0 0 25px white;
+}
+
+@keyframes zoom{
+
+  0%{
+    transform:scale(0.7);
+  }
+
+  50%{
+    transform:scale(1.15);
+  }
+
+  100%{
+    transform:scale(0.7);
+  }
+}
+
+/* HAPPY BIRTHDAY */
+
+.birthday-title{
+
+  color:#ffb6f2;
+
+  font-size:3rem;
+
+  font-weight:900;
+
+  margin-bottom:30px;
+
+  text-shadow:
+  0 0 5px rgba(255,182,242,0.4),
+  0 0 10px rgba(255,182,242,0.2);
+
+  animation:titleShow 2s forwards;
+}
+
+@keyframes titleShow{
+
+  from{
+    opacity:0;
+    transform:translateY(-40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* GIFT BOX */
+
+.gift-box{
+
+  position:relative;
+
+  width:230px;
+  height:230px;
+
+  cursor:pointer;
+
+  animation:giftFloat 2s infinite ease-in-out;
+}
+
+@keyframes giftFloat{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-12px);
+  }
+}
+
+.gift-base{
+
+  position:absolute;
+
+  bottom:0;
+
+  width:230px;
+  height:190px;
+
+  border-radius:18px;
+
+  background:linear-gradient(145deg,#ff4fc4,#ff9be8);
+
+  box-shadow:
+  0 10px 25px rgba(255,0,170,0.4),
+  inset 0 0 20px rgba(255,255,255,0.3);
+}
+
+.gift-lid{
+
+  position:absolute;
+
+  top:0;
+  left:-10px;
+
+  width:250px;
+  height:45px;
+
+  border-radius:12px;
+
+  background:linear-gradient(145deg,#ffb3f0,#ff6fd8);
+}
+
+.ribbon-v{
+
+  position:absolute;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:32px;
+  height:230px;
+
+  background:linear-gradient(to right,#ffd700,#fff4a3);
+}
+
+.ribbon-h{
+
+  position:absolute;
+
+  top:100px;
+
+  width:230px;
+  height:32px;
+
+  background:linear-gradient(to bottom,#ffd700,#fff4a3);
+}
+
+.bow{
+
+  position:absolute;
+
+  top:-28px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:70px;
+  height:70px;
+
+  border-radius:50%;
+
+  background:radial-gradient(circle,#fff4a3,#ffd700);
+}
+
+/* CLICK TEXT */
+
+.click-text{
+
+  margin-top:25px;
+
+  font-size:1.2rem;
+
+  animation:blink 1s infinite;
+}
+
+@keyframes blink{
+
+  50%{
+    opacity:0.5;
+  }
+}
+
+/* CAKE */
+
+.cake{
+
+  position:relative;
+
+  width:250px;
+  height:270px;
+
+  margin:20px 0;
+
+  animation:cakeBounce 2s infinite;
+}
+
+@keyframes cakeBounce{
+
+  0%,100%{
+    transform:translateY(0);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+.cake-layer1,
+.cake-layer2,
+.cake-layer3{
+
+  position:absolute;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  border-radius:22px;
+}
+
+.cake-layer1{
+
+  bottom:0;
+
+  width:250px;
+  height:90px;
+
+  background:linear-gradient(145deg,#ffb347,#ff8c42);
+}
+
+.cake-layer2{
+
+  bottom:75px;
+
+  width:200px;
+  height:80px;
+
+  background:linear-gradient(145deg,#ff6fcf,#ff4fb3);
+}
+
+.cake-layer3{
+
+  bottom:145px;
+
+  width:150px;
+  height:70px;
+
+  background:linear-gradient(145deg,#ffffff,#ffe6f5);
+}
+
+/* CANDLE */
+
+.candle{
+
+  position:absolute;
+
+  top:10px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:16px;
+  height:60px;
+
+  border-radius:10px;
+
+  background:linear-gradient(to right,#00ff99,#00cc77);
+}
+
+.flame{
+
+  position:absolute;
+
+  top:-24px;
+  left:50%;
+
+  transform:translateX(-50%);
+
+  width:24px;
+  height:24px;
+
+  border-radius:50%;
+
+  background:radial-gradient(circle,yellow,orange);
+
+  box-shadow:0 0 25px gold;
+
+  animation:flicker 0.2s infinite alternate;
+}
+
+@keyframes flicker{
+
+  from{
+    transform:translateX(-50%) scale(1);
+  }
+
+  to{
+    transform:translateX(-50%) scale(1.15);
+  }
+}
+
+/* WISH */
+
+.wish{
+
+  max-width:600px;
+
+  padding:22px;
+
+  border-radius:20px;
+
+  background:rgba(255,255,255,0.06);
+
+  backdrop-filter:blur(5px);
+
+  color:#00ff99;
+
+  font-size:1.2rem;
+
+  line-height:1.9;
+
+  animation:wishShow 2s forwards;
+}
+
+@keyframes wishShow{
+
+  from{
+    opacity:0;
+    transform:translateY(40px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* WATERMARK */
+
+.watermark{
+
+  position:fixed;
+
+  bottom:15px;
+  right:18px;
+
+  font-size:0.9rem;
+
+  color:rgba(255,255,255,0.45);
+
+  letter-spacing:1px;
+
+  z-index:999;
+
+  user-select:none;
+
+  text-shadow:
+  0 0 8px rgba(255,255,255,0.25);
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+  .birthday-title{
+    font-size:2rem;
+  }
+
+  .countdown{
+    font-size:6rem;
+  }
+
+  .wish{
+    font-size:1rem;
+  }
+
+  .gift-box{
+    transform:scale(0.8);
+  }
+
+  .cake{
+    transform:scale(0.8);
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+
+<audio id="birthdayMusic" autoplay loop>
+  <source src="the_mountain-happy-birthday-508020.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MATRIX -->
+
+<canvas id="matrix"></canvas>
+
+<!-- START SCREEN -->
+
+<div class="screen" id="startScreen">
+
+  <h2 class="start-title">
+    💖 Special Surprise For Simrika 💖
+  </h2>
+
+  <button class="btn" onclick="startCountdown()">
+    🎁 Surprise
+  </button>
+
+</div>
+
+<!-- COUNTDOWN -->
+
+<div class="screen hidden" id="countdownScreen">
+
+  <div class="countdown" id="countdown">
+    3
+  </div>
+
+</div>
+
+<!-- GIFT SCREEN -->
+
+<div class="screen hidden" id="giftScreen">
+
+  <h1 class="birthday-title">
+    🎉 HAPPY BIRTHDAY SIMRIKA 🎉
+  </h1>
+
+  <div class="gift-box" onclick="openGift()">
+
+    <div class="gift-lid"></div>
+
+    <div class="gift-base"></div>
+
+    <div class="ribbon-v"></div>
+
+    <div class="ribbon-h"></div>
+
+    <div class="bow"></div>
+
+  </div>
+
+  <div class="click-text">
+    Click The Gift 🎁
+  </div>
+
+</div>
+
+<!-- FINAL SCREEN -->
+
+<div class="screen hidden" id="finalScreen">
+
+  <h1 class="birthday-title">
+    🎉 HAPPY BIRTHDAY SIMRIKA 🎉
+  </h1>
+
+  <div class="cake">
+
+    <div class="cake-layer1"></div>
+
+    <div class="cake-layer2"></div>
+
+    <div class="cake-layer3"></div>
+
+    <div class="candle">
+
+      <div class="flame"></div>
+
+    </div>
+
+  </div>
+
+  <div class="wish">
+
+    Wishing you endless happiness,
+    smiles, success, and love 💚✨
+    <br><br>
+
+    May your life always stay beautiful,
+    bright, and full of unforgettable memories 🌸
+
+  </div>
+
+</div>
+
+<!-- WATERMARK -->
+
+<div class="watermark">
+  code by mishan
+</div>
+
+<script>
+
+/* START MUSIC WHEN WEBSITE OPENS */
+
+window.addEventListener("click",()=>{
+
+  const music=document.getElementById("birthdayMusic");
+
+  music.play();
+
+},{once:true});
+
+/* COUNTDOWN */
+
+function startCountdown(){
+
+  document.getElementById("startScreen").classList.add("hidden");
+
+  document.getElementById("countdownScreen").classList.remove("hidden");
+
+  let count=3;
+
+  const countdown=document.getElementById("countdown");
+
+  countdown.innerHTML=count;
+
+  countdown.style.color="lime";
+
+  let interval=setInterval(()=>{
+
+    count--;
+
+    if(count==2){
+
+      countdown.style.color="yellow";
+    }
+
+    if(count==1){
+
+      countdown.style.color="red";
+    }
+
+    if(count>0){
+
+      countdown.innerHTML=count;
+
+    }else{
+
+      clearInterval(interval);
+
+      document.getElementById("countdownScreen").classList.add("hidden");
+
+      document.getElementById("giftScreen").classList.remove("hidden");
+    }
+
+  },1000);
+}
+
+/* OPEN GIFT */
+
+function openGift(){
+
+  document.getElementById("giftScreen").classList.add("hidden");
+
+  document.getElementById("finalScreen").classList.remove("hidden");
+}
+
+/* MATRIX EFFECT */
+
+const canvas=document.getElementById("matrix");
+
+const ctx=canvas.getContext("2d");
+
+function resizeCanvas(){
+
+  canvas.width=window.innerWidth;
+
+  canvas.height=window.innerHeight;
+}
+
+resizeCanvas();
+
+const letters=
+"ABCDEFGHIJKLMNOPQRSTUVWXYZアイウエオカキクケコサシスセソタチツテトナニヌネノ0123456789";
+
+const fontSize=18;
+
+let columns=Math.floor(window.innerWidth/fontSize);
+
+let drops=[];
+
+for(let i=0;i<columns;i++){
+
+  drops[i]=Math.random()*window.innerHeight/fontSize;
+}
+
+function drawMatrix(){
+
+  ctx.fillStyle="rgba(0,0,0,0.05)";
+
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+
+  ctx.fillStyle="#66ccff";
+
+  ctx.font=fontSize+"px monospace";
+
+  for(let i=0;i<drops.length;i++){
+
+    const text=
+    letters[Math.floor(Math.random()*letters.length)];
+
+    ctx.fillText(text,i*fontSize,drops[i]*fontSize);
+
+    if(drops[i]*fontSize>canvas.height &&
+    Math.random()>0.975){
+
+      drops[i]=0;
+    }
+
+    drops[i]++;
+  }
+}
+
+setInterval(drawMatrix,35);
+
+window.addEventListener("resize",()=>{
+
+  resizeCanvas();
+
+  columns=Math.floor(window.innerWidth/fontSize);
+
+  drops=[];
+
+  for(let i=0;i<columns;i++){
+
+    drops[i]=Math.random()*window.innerHeight/fontSize;
+  }
+});
+
+</script>
+
+</body>
+</html>
